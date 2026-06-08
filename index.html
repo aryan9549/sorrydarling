@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For shreni ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --red:#ff274f;
+  --dark:#050505;
+  --card:#111111cc;
+  --border:rgba(255,255,255,0.08);
+  --text:#f5f5f5;
+  --muted:#9c9c9c;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:black;
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* VIDEO BG */
+
+.bg-video{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-3;
+  opacity:0.8;
+  filter:contrast(1.1) saturate(1.2);
+}
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:
+  linear-gradient(to bottom,
+  rgba(0,0,0,0.65),
+  rgba(0,0,0,0.9)),
+  radial-gradient(circle at top,
+  rgba(255,0,60,0.2),
+  transparent 60%);
+  z-index:-2;
+}
+
+/* FLOATING HEARTS */
+
+.hearts{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:-1;
+}
+
+.heart{
+  position:absolute;
+  font-size:18px;
+  opacity:0;
+  animation:float linear infinite;
+}
+
+@keyframes float{
+  0%{
+    transform:translateY(100vh) scale(.5);
+    opacity:0;
+  }
+  10%{
+    opacity:.2;
+  }
+  100%{
+    transform:translateY(-10vh) scale(1);
+    opacity:0;
+  }
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:2rem;
+  position:relative;
+}
+
+.hero-content{
+  max-width:900px;
+}
+
+.tag{
+  display:inline-block;
+  padding:8px 18px;
+  border-radius:100px;
+  border:1px solid rgba(255,255,255,0.08);
+  background:rgba(255,255,255,0.04);
+  color:#ff6b84;
+  font-size:12px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  margin-bottom:25px;
+  backdrop-filter:blur(10px);
+}
+
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(70px,15vw,160px);
+  line-height:.9;
+  letter-spacing:-.03em;
+  margin-bottom:20px;
+  text-shadow:
+  0 0 30px rgba(255,0,70,0.2),
+  0 10px 40px rgba(0,0,0,0.5);
+}
+
+.hero h1 span{
+  color:var(--red);
+  font-style:italic;
+}
+
+.subtitle{
+  color:var(--muted);
+  font-size:16px;
+}
+
+.subtitle strong{
+  color:white;
+}
+
+/* SCROLL */
+
+.scroll{
+  position:absolute;
+  bottom:35px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:12px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+}
+
+.arrow{
+  width:18px;
+  height:18px;
+  border-right:1.5px solid var(--muted);
+  border-bottom:1.5px solid var(--muted);
+  transform:rotate(45deg);
+  margin:10px auto 0;
+  animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+  0%,100%{
+    transform:rotate(45deg) translateY(0);
+  }
+  50%{
+    transform:rotate(45deg) translateY(8px);
+  }
+}
+
+/* SECTION */
+
+.sections{
+  max-width:720px;
+  margin:auto;
+  padding:0 20px 80px;
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
+
+/* CARDS */
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:35px;
+  backdrop-filter:blur(18px);
+  position:relative;
+  overflow:hidden;
+  transition:.35s;
+  opacity:0;
+  transform:translateY(30px);
+}
+
+.card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(255,40,80,.25);
+}
+
+.card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+  linear-gradient(
+  135deg,
+  rgba(255,255,255,.05),
+  transparent 35%);
+  pointer-events:none;
+}
+
+.line{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:4px;
+  background:linear-gradient(90deg,#ff1744,#75001a);
+}
+
+.label{
+  font-size:11px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:#ff6882;
+  margin-bottom:20px;
+}
+
+.text{
+  line-height:1.9;
+  color:#e8e8e8;
+  font-size:16px;
+}
+
+.text strong{
+  color:#ff4968;
+}
+
+.sign{
+  margin-top:25px;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.08);
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;
+  color:#d0d0d0;
+}
+
+/* MOMO BOX */
+
+.momo-box{
+  margin:20px 0;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:18px;
+  padding:18px;
+}
+
+.momo-count{
+  font-size:50px;
+  font-weight:700;
+  color:var(--red);
+  font-family:'Cormorant Garamond',serif;
+}
+
+/* BUTTON */
+
+.play-btn{
+  width:100%;
+  padding:18px;
+  border:none;
+  border-radius:18px;
+  background:
+  linear-gradient(135deg,#ff1744,#650014);
+  color:white;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  margin-top:15px;
+  transition:.3s;
+}
+
+.play-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:
+  0 10px 30px rgba(255,20,60,.35);
+}
+
+/* PHOTOS */
+
+.photos{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:15px;
+}
+
+.photo{
+  aspect-ratio:1;
+  border-radius:16px;
+  border:1.5px dashed rgba(255,255,255,.15);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#777;
+  font-size:14px;
+  background:rgba(255,255,255,.02);
+  overflow:hidden;
+}
+
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* FOOTER */
+
+.footer{
+  text-align:center;
+  padding:40px 20px;
+  color:#888;
+  font-size:14px;
+}
+
+.footer strong{
+  color:#ff4668;
+}
+
+@media(max-width:600px){
+
+  .hero h1{
+    font-size:90px;
+  }
+
+  .card{
+    padding:25px;
+  }
+
+  .photos{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- VIDEO -->
+<video autoplay muted loop playsinline class="bg-video">
+  <source src="vid.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<!-- HEARTS -->
+<div class="hearts" id="hearts"></div>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <div class="tag">
+      ✦ i am sorry
+    </div>
+
+    <h1>
+      made for <br>
+      <span>you</span>
+    </h1>
+
+    <p class="subtitle">
+      made with ❤️ by <strong>chotu</strong>
+    </p>
+
+  </div>
+
+  <div class="scroll">
+    keep scrolling
+    <div class="arrow"></div>
+  </div>
+
+</section>
+
+<!-- MAIN -->
+
+<div class="sections">
+
+  <!-- LOVE NOTE -->
+
+  <div class="card">
+
+    <div class="line"></div>
+
+    <div class="label">
+      💌 THE LOVE NOTE
+    </div>
+
+    <div class="text">
+
+      Hey <strong>lambu</strong>, <br><br>
+
+      You're my favourite person,
+      i am sorry for yesturday,<br><br>
+
+     i am grateful for every second we spend together. <br><br>
+
+     the last few days were so special to me and also <br><br>
+     we broke the record of staying together by 2 hr <br><br> 
+     yeahhhhhhhhh baby :)
+
+    </div>
+
+    <div class="sign">
+      Always yours, chotu ❤️
+    </div>
+
+  </div>
+
+  
+  <!-- PLAYLIST -->
+
+  <div class="card">
+
+    <div class="line"></div>
+
+    <div class="label">
+      🎵 OUR PLAYLIST
+    </div>
+
+    <div class="text">
+
+      Songs that remind me of you,
+      of us,
+      of every little memory we've made together.
+
+    </div>
+
+    <button class="play-btn"
+    onclick="window.open('https://open.spotify.com/playlist/28aRjZle2MxoZu5Y4xqwGy?si=BzfAsXIvQ2GRs5Qqe73GJg&pi=Ruqp0ESmTwu8I')">
+
+      🎧 Play Our Songs
+
+    </button>
+
+  </div>
+
+  <!-- MEMORIES -->
+
+  <div class="card">
+
+    <div class="line"></div>
+
+    <div class="label">
+      📸 OUR MEMORIES
+    </div>
+
+    <div class="photos">
+
+      <div class="photo"><img src="photo1.jpeg"></div>
+      <div class="photo"><img src="photo2.jpeg"></div>
+      <div class="photo"><img src="photo3.jpeg"></div>
+      <div class="photo"><img src="photo4.jpeg"></div>
+      <div class="photo"><img src="photo5.jpeg"></div>
+      <div class="photo"><img src="photo6.jpeg"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+  crafted with love by
+  <strong>chotu</strong>
+  for
+  <strong>lambu ❤️</strong>
+
+</div>
+
+<script>
+
+/* HEARTS */
+
+const hearts = document.getElementById('hearts');
+
+const emojis = ['❤️','💖','💕','💗'];
+
+for(let i=0;i<15;i++){
+
+  const h = document.createElement('div');
+
+  h.className='heart';
+
+  h.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+
+  h.style.left=Math.random()*100+'%';
+
+  h.style.animationDuration=
+  (Math.random()*10+10)+'s';
+
+  h.style.animationDelay=
+  (Math.random()*10)+'s';
+
+  hearts.appendChild(h);
+
+}
+
+/* CARD REVEAL */
+
+const cards=document.querySelectorAll('.card');
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add('show');
+
+}
+
+});
+
+},{threshold:0.15});
+
+cards.forEach(card=>observer.observe(card));
+
+</script>
+
+</body>
+</html>
